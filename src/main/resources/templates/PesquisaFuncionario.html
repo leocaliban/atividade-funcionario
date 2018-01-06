@@ -40,6 +40,11 @@
 								<td class="text-center" th:text="${{funcionario.dataNascimento}}"></td>
 								<td class="text-center" th:text="${{funcionario.salario}}"></td>
 								<td class="text-center" th:text="${funcionario.cargo}"></td>
+								<td class="text-center">
+									<a class="btn btn-link btn-xs" th:href="@{funcionarios/editar/{idFuncionario}(idFuncionario=${funcionario.id})}">
+ 									<span class="glyphicon glyphicon-pencil"></span>
+ 									</a>
+								</td>
 								
 								
 							</tr>

@@ -21,5 +21,10 @@ public class FuncionarioService {
 	public void salvar(Funcionario funcionario) {
 		repository.save(funcionario);
 	}
+	
+	public Funcionario editar(Long id) {
+		Funcionario funcionario = repository.findOne(id);
+		return funcionario;
+	}
 
 }
