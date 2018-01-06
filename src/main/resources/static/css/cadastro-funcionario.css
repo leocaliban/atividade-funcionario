@@ -1,0 +1,112 @@
+.logotipo{
+	padding:10px;
+	margin-right: 20px;  
+}
+.logotipo img{
+	height: 30px;
+}
+
+h1#cadastro{
+ 	text-align: center;
+ 	font-weight: bold;
+ 	color: #606060;
+ }
+
+.panel-default{
+ 	margin-left:10px;
+ 	margin-right:10px;
+}
+.panel-title{
+ 	font-weight: bold;
+ 	font-size: 15pt;
+ 	margin:0px;
+ 	color: #606060;
+ }
+ .form-horizontal{
+ 	margin-left:200px;
+ 	margin-right:200px;
+ }
+ .form-group{
+ 	color: #606060;
+ }
+ .link-pesquisa{
+ 	float:right;
+ 	padding:0px;
+ }
+ 
+ .titulo-formulario{
+ 	float:left;
+ 	padding:0px;
+ } 	
+ 
+ img#icone-titulo{
+ 	max-width:30px;
+    max-height:30px;
+    padding:0px;
+ }
+ 
+ img#icone-pesquisa{
+ 	max-width:30px;
+    max-height:30px;
+    padding:0px;
+ }
+ 
+ .tituloTabela{
+ 	padding:0px;
+ 	margin: 0px;
+ 	font-weight: bold;
+ 	font-size: 15pt;
+ 	margin:0px;
+ 	color: #606060;
+ }	   
+ 
+ 
+ 
+ 
+ 
+ 
+.busca{
+	margin-top: 12px;
+}
+.dados-os{
+	margin-top: 30px;
+}
+.paginacao .pagination{
+	margin: 0;
+}
+.nomeAluno{
+	padding-top:65px;
+}
+.nomeOrientador{
+	padding-top:65px;
+}
+.tituloCadastro{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.divData{
+	left: 15px;
+}
+
+
+@media(max-height: 767px){
+	.perfil{
+		color: #FFF;
+
+	}
+	.perfil a{
+		color: #9d9d9d;
+		display: block;
+		padding: 5px 0px;
+	}
+	.perfil a:hover{
+		text-decoration: none;
+		color: #FFF;
+	}
+	.paginacao{
+		text-align: center;
+	}
+	.paginacao .pagination{
+		margin-top: 20px;
+	}
+}

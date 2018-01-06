@@ -1,0 +1,30 @@
+body {
+	/* vh = altura da tela */
+	min-height: 100vh;
+	background-color: #CCC;
+	/* o 'g' seleciona cores cinzas e o 'random' sorteia as fotos */
+	background-image: url('https://unsplash.it/g/1920/974?random');
+}
+
+/* posicionando o form do login no meio da tela */
+.login-form{
+	height: auto;
+	padding: 20px 30px;
+	background-color: rgba(0,0,0,.9);
+	margin-top: 50vh;
+	color: #FFF;
+	/* traduz a posicao vcertical do elemento para a metade de seu posicionamento, centralizando-o*/
+	transform: translateY(-50%);
+}
+img{
+	margin: auto;
+}
+
+.login-form h1{
+	margin: 0 0 5px;
+}
+
+.login-form h2{
+	margin: 0 0 30px;
+	font-size: 1em;
+}

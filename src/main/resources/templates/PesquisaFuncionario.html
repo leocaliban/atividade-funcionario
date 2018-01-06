@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="LayoutPadrao">
+	<head>
+		<title>Pesquisa De Funcionários</title>
+	</head>
+		<section layout:fragment="conteudo">
+
+		<div class="container">
+			
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2 class="tituloTabela"><img id="icone-pesquisa" src="/images/pesquisar.png"/><strong> Pesquisa De Funcionários</strong></h2>
+			</div>
+			<div class="panel-body">
+	
+				<div class="table-responsive">
+					<table class="table table-striped table-bordered table-hover dados-funcionarios">
+						<thead>
+							<tr>
+								<th class="text-center col-md-0">Status</th>
+								<th class="col-md-3">Nome</th>
+								<th class="text-center col-md-2">CPF</th>
+								<th class="text-center col-md-1">Nascimento</th>
+								<th class="text-center col-md-2">Salário</th>
+								<th class="text-center col-md-2">Cargo</th>
+								<th class="col-md-3"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="funcionario : ${funcionarios}">
+								<td class="text-center">
+									<span class="label" th:text="${funcionario.status.descricao}" 
+									th:classappend="${funcionario.ativo ? 'label-success' : 'label-danger'}"></span>
+								</td>
+								<td th:text="${funcionario.nome}"></td>
+								<td class="text-center" th:text="${funcionario.cpf}"></td>
+								<td class="text-center" th:text="${funcionario.dataNascimento}"></td>
+								<td class="text-center" th:text="${funcionario.salario}"></td>
+								<td class="text-center" th:text="${funcionario.cargo}"></td>
+								
+								
+							</tr>
+							<tr>
+								<td colspan="12" th:if="${#lists.isEmpty(funcionarios)}">Nenhum Funcionário Foi Encontrado.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+			<footer class="row">
+				<div class="col-sm-6">
+					<a class="btn btn-primary" href="/funcionarios/novo" role="button">Novo Funcionário</a>
+				</div>
+			</footer>
+
+		</div>
+	</section>
+</html>

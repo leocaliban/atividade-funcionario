@@ -4,9 +4,16 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 public class Funcionario implements Serializable {
@@ -19,17 +26,23 @@ public class Funcionario implements Serializable {
 	
 	private String nome;
 	private String cpf;
+	
+	@DateTimeFormat(pattern="dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
+	
+	@NumberFormat(pattern = "#,##0.00")
 	private Double salario;
 	private String cargo;
-	private boolean isAtivo;
+	
+	@Enumerated(EnumType.STRING)
+	private Status status;
 	
 	public Funcionario() {
-		
+		this.status = Status.ATIVO;
 	}
 
-	public Funcionario(Long id, String nome, String cpf, Date dataNascimento, Double salario, String cargo,
-			boolean isAtivo) {
+	public Funcionario(Long id, String nome, String cpf, Date dataNascimento, Double salario, String cargo) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -37,7 +50,10 @@ public class Funcionario implements Serializable {
 		this.dataNascimento = dataNascimento;
 		this.salario = salario;
 		this.cargo = cargo;
-		this.isAtivo = isAtivo;
+	}
+	
+	public boolean isAtivo() {
+		return Status.ATIVO.equals(this.status);
 	}
 
 	public Long getId() {
@@ -87,13 +103,13 @@ public class Funcionario implements Serializable {
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
-
-	public boolean isAtivo() {
-		return isAtivo;
+	
+	public Status getStatus() {
+		return status;
 	}
 
-	public void setAtivo(boolean isAtivo) {
-		this.isAtivo = isAtivo;
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	@Override
