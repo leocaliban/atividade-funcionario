@@ -11,7 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
@@ -24,15 +29,27 @@ public class Funcionario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotEmpty(message = "Nome obrigatório!")
+	@Size(max = 40, message = "Nome muito longo, Máximo 40 caracteres.")
 	private String nome;
+	
+	@NotEmpty(message = "CPF obrigatório!")
+	@Size(max = 11,min = 11, message = "CPF deve conter 11 caracteres.")
 	private String cpf;
 	
+	@NotNull (message = "A Data É Obrigatória!")
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
 	
+	@DecimalMin (value = "954.00", message = "Salário Não Pode Ser Menor Que R$ 954.00!")
+	@DecimalMax (value = "999999.99", message = "Salário Não Pode Ser Maior Que R$ 999.999,99")
+	@NotNull(message = "O Salário É Obrigatório!")
 	@NumberFormat(pattern = "#,##0.00")
 	private Double salario;
+	
+	@NotEmpty(message = "Cargo obrigatório!")
+	@Size(max = 40, message = "Nome do cargo muito longo, Máximo 40 caracteres.")
 	private String cargo;
 	
 	@Enumerated(EnumType.STRING)
