@@ -29,12 +29,12 @@ public class Funcionario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty(message = "Nome obrigatório!")
-	@Size(max = 40, message = "Nome muito longo, Máximo 40 caracteres.")
+	@NotEmpty(message = "Nome Obrigatório!")
+	@Size(max = 40, message = "Nome Muito Longo, Máximo 40 Caracteres.")
 	private String nome;
 	
-	@NotEmpty(message = "CPF obrigatório!")
-	@Size(max = 11,min = 11, message = "CPF deve conter 11 caracteres.")
+	@NotEmpty(message = "CPF Obrigatório!")
+	@Size(max = 11,min = 11, message = "CPF Deve Conter 11 Caracteres.")
 	private String cpf;
 	
 	@NotNull (message = "A Data É Obrigatória!")
@@ -48,8 +48,8 @@ public class Funcionario implements Serializable {
 	@NumberFormat(pattern = "#,##0.00")
 	private Double salario;
 	
-	@NotEmpty(message = "Cargo obrigatório!")
-	@Size(max = 40, message = "Nome do cargo muito longo, Máximo 40 caracteres.")
+	@NotEmpty(message = "Cargo Obrigatório!")
+	@Size(max = 40, message = "Nome Do Cargo Muito Longo, Máximo 40 Caracteres.")
 	private String cargo;
 	
 	@Enumerated(EnumType.STRING)

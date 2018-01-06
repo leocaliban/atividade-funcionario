@@ -10,6 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.leocaliban.empresa.domain.Funcionario;
 import com.leocaliban.empresa.services.FuncionarioService;
@@ -29,14 +30,13 @@ public class FuncionarioResource {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView salvar(@Validated Funcionario funcionario, Errors errors) {
-		ModelAndView mv = new ModelAndView("CadastroFuncionario");
+	public String salvar(@Validated Funcionario funcionario, Errors errors, RedirectAttributes attributes) {
 		if(errors.hasErrors()) {
-			return mv;
+			return "CadastroFuncionario";
 		}
 		service.salvar(funcionario);
-		mv.addObject("mensagem","Funcionário Cadastrado Com Sucesso!");
-		return mv;
+		attributes.addFlashAttribute("mensagem","Funcionário Cadastrado Com Sucesso!");
+		return "redirect:/funcionarios/novo";
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
