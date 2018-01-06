@@ -26,5 +26,9 @@ public class FuncionarioService {
 		Funcionario funcionario = repository.findOne(id);
 		return funcionario;
 	}
+	
+	public void excluir(Long id) {
+		repository.delete(id);
+	}
 
 }

@@ -70,5 +70,12 @@ public class FuncionarioResource {
 		return mv;
 	}
 	
+	@RequestMapping(value="{id}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long id, RedirectAttributes attributes) {
+		service.excluir(id);
+		attributes.addFlashAttribute("mensagem", "Funcionário Excluído Com Sucesso!");
+		return "redirect:/funcionarios";
+	}
+	
 	
 }
