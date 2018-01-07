@@ -3,6 +3,7 @@ package com.leocaliban.empresa.resources;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
@@ -36,9 +37,15 @@ public class FuncionarioResource {
 		if(errors.hasErrors()) {
 			return TELA_CADASTRO;
 		}
-		service.salvar(funcionario);
-		attributes.addFlashAttribute("mensagem","Funcionário Cadastrado Com Sucesso!");
-		return "redirect:/funcionarios/novo";
+		try {
+			service.salvar(funcionario);	
+			attributes.addFlashAttribute("mensagem","Funcionário Cadastrado Com Sucesso!");
+			return "redirect:/funcionarios/novo";
+		}
+		catch(DataIntegrityViolationException e) {
+			errors.rejectValue("dataNascimento", null, "Formato De Data Inválido");
+			return TELA_CADASTRO;
+		}	
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
