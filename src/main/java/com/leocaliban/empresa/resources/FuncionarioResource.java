@@ -3,7 +3,6 @@ package com.leocaliban.empresa.resources;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
@@ -42,8 +41,8 @@ public class FuncionarioResource {
 			attributes.addFlashAttribute("mensagem","Funcionário Cadastrado Com Sucesso!");
 			return "redirect:/funcionarios/novo";
 		}
-		catch(DataIntegrityViolationException e) {
-			errors.rejectValue("dataNascimento", null, "Formato De Data Inválido");
+		catch(IllegalArgumentException e) {
+			errors.rejectValue("dataNascimento", null, e.getMessage());
 			return TELA_CADASTRO;
 		}	
 	}
@@ -70,11 +69,17 @@ public class FuncionarioResource {
 		if(errors.hasErrors()) {
 			return mv;
 		}
-		service.salvar(funcionario);
-
-		mv = new ModelAndView("redirect:/funcionarios");
-		attributes.addFlashAttribute("mensagem","Edição Salva Com Sucesso!");
-		return mv;
+		try {
+			service.salvar(funcionario);	
+			mv = new ModelAndView("redirect:/funcionarios");
+			attributes.addFlashAttribute("mensagem","Edição Salva Com Sucesso!");
+			return mv;
+		}
+		catch(IllegalArgumentException e) {
+			errors.rejectValue("dataNascimento", null, e.getMessage());
+			return mv;
+		}
+		
 	}
 	
 	@RequestMapping(value="{id}", method = RequestMethod.DELETE)
