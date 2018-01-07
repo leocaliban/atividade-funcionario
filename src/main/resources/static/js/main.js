@@ -1,12 +1,9 @@
 /* inicializando o jQuery*/
 jQuery(document).ready(function(){
 
-	$('[data-toggle="tooltip"').tooltip();
-});
-
-/*tooltip*/
-$(function(){
 	$('[rel="tooltip"]').tooltip();
+	
+	$('.js-currency').maskMoney({decimal:',',thousands:'.',allowZero: true});
 });
 
 /*função do modal excluir*/
