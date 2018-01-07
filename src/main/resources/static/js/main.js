@@ -1,6 +1,6 @@
 /* inicializando o jQuery*/
 jQuery(document).ready(function(){
-	/* seletor tipo css, pegando todo elemento data-toggle que é um tooltip faça a chamada*/
+
 	$('[data-toggle="tooltip"').tooltip();
 });
 

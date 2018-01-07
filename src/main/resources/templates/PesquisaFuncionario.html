@@ -43,11 +43,13 @@
 									<td class="text-center" th:text="${{funcionario.salario}}"></td>
 									<td class="text-center" th:text="${funcionario.cargo}"></td>
 									<td class="text-center">
-										<a class="btn btn-link btn-xs" th:href="@{funcionarios/editar/{idFuncionario}(idFuncionario=${funcionario.id})}">
+										<a class="btn btn-link btn-xs" th:href="@{funcionarios/editar/{idFuncionario}(idFuncionario=${funcionario.id})}"
+											title="Editar" rel="tooltip" data-placement="top">
 	 										<span class="glyphicon glyphicon-edit text-warning"></span>
 	 									</a>
 	 									<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#modalExcluir"
- 											th:attr="data-id=${funcionario.id},data-nome=${funcionario.nome}">
+ 											th:attr="data-id=${funcionario.id},data-nome=${funcionario.nome}"
+ 											title="Excluir" rel="tooltip" data-placement="top">
  											<span class="glyphicon glyphicon-trash text-danger"></span>
  										</a>
 									</td>
