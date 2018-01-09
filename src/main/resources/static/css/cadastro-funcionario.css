@@ -22,10 +22,7 @@ h1#cadastro{
  	margin:0px;
  	color: #606060;
  }
- .form-horizontal{
- 	margin-left:200px;
- 	margin-right:200px;
- }
+ 
  .form-group{
  	color: #606060;
  }
@@ -60,36 +57,16 @@ h1#cadastro{
  	color: #606060;
  }	   
  
+ form#formulario{
+ 	margin-left:200px;
+ 	margin-right:200px;
+ }
  
+ form#caixa-pesquisa{
+ 	padding:0px;
+ 	margin:0px 400px 0px 400px auto;
+ }
  
- 
- 
- 
- 
- 
-.busca{
-	margin-top: 12px;
-}
-.dados-os{
-	margin-top: 30px;
-}
-.paginacao .pagination{
-	margin: 0;
-}
-.nomeAluno{
-	padding-top:65px;
-}
-.nomeOrientador{
-	padding-top:65px;
-}
-.tituloCadastro{
-	margin-top: 5px;
-	margin-bottom: 5px;
-}
-.divData{
-	left: 15px;
-}
-
 
 @media(max-height: 767px){
 	.perfil{
