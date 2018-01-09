@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.leocaliban.empresa.domain.Funcionario;
 import com.leocaliban.empresa.domain.Status;
 import com.leocaliban.empresa.repositories.FuncionarioRepository;
+import com.leocaliban.empresa.repositories.filters.FuncionarioFilter;
 
 @Service
 public class FuncionarioService {
@@ -50,6 +51,11 @@ public class FuncionarioService {
 			repository.save(funcionario);
 			return Status.ATIVO.getDescricao();
 		}
+	}
+	
+	public List<Funcionario>filtrar(FuncionarioFilter filtro){
+		String nome = filtro.getNome()==null ? "%" : filtro.getNome();
+		return repository.findByNomeContaining(nome);
 	}
 
 }
