@@ -7,6 +7,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.leocaliban.empresa.domain.Funcionario;
+import com.leocaliban.empresa.domain.Status;
 import com.leocaliban.empresa.repositories.FuncionarioRepository;
 
 @Service
@@ -35,6 +36,20 @@ public class FuncionarioService {
 	
 	public void excluir(Long id) {
 		repository.delete(id);
+	}
+	
+	public String mudarStatus(Long id) {
+		Funcionario funcionario = editar(id);
+		if(funcionario.getStatus() == Status.ATIVO) {
+			funcionario.setStatus(Status.INATIVO);
+			repository.save(funcionario);
+			return Status.INATIVO.getDescricao();
+		}
+		else {
+			funcionario.setStatus(Status.ATIVO);
+			repository.save(funcionario);
+			return Status.ATIVO.getDescricao();
+		}
 	}
 
 }

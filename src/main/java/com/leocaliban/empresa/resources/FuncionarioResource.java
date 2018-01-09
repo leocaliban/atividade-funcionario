@@ -9,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -87,6 +88,11 @@ public class FuncionarioResource {
 		service.excluir(id);
 		attributes.addFlashAttribute("mensagem", "Funcionário Excluído Com Sucesso!");
 		return "redirect:/funcionarios";
+	}
+	
+	@RequestMapping(value = "/{id}/status", method = RequestMethod.PUT)
+	public @ResponseBody String mudarStatus(@PathVariable Long id) {
+		return service.mudarStatus(id);
 	}
 	
 	

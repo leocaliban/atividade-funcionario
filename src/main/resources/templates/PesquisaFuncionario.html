@@ -33,7 +33,7 @@
 							</thead>
 							<tbody>
 								<tr th:each="funcionario : ${funcionarios}">
-									<td class="text-center">
+									<td class="text-center" th:attr="data-role=${funcionario.id}">
 										<span class="label" th:text="${funcionario.status.descricao}" 
 										th:classappend="${funcionario.ativo ? 'label-success' : 'label-danger'}"></span>
 									</td>
@@ -51,6 +51,19 @@
  											th:attr="data-id=${funcionario.id},data-nome=${funcionario.nome}"
  											title="Excluir" rel="tooltip" data-placement="top">
  											<span class="glyphicon glyphicon-trash text-danger"></span>
+ 										</a>
+ 										
+ 										<a class="btn btn-link btn-xs js-atualizar-status" th:if="${funcionario.ativo}"
+ 											title="Desativar" rel="tooltip" data-placement="top"
+ 											th:attr="data-id=${funcionario.id},data-status=${funcionario.Status.descricao}"
+ 											th:href="@{funcionarios/{id}/status(id=${funcionario.id})}">
+ 											<span class="glyphicon glyphicon-remove" th:attr="data-s=${funcionario.id}"></span>
+ 										</a>
+ 										<a class="btn btn-link btn-xs js-atualizar-status" th:if="${!funcionario.ativo}"
+ 											title="Ativar" rel="tooltip" data-placement="top"
+ 											th:attr="data-id=${funcionario.id},data-status=${funcionario.Status.descricao}"
+ 											th:href="@{funcionarios/{id}/status(id=${funcionario.id})}">
+ 											<span class="glyphicon glyphicon-ok"></span>
  										</a>
 									</td>
 									
