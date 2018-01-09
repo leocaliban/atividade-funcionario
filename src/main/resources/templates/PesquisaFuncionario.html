@@ -57,7 +57,7 @@
  											title="Desativar" rel="tooltip" data-placement="top"
  											th:attr="data-id=${funcionario.id},data-status=${funcionario.Status.descricao}"
  											th:href="@{funcionarios/{id}/status(id=${funcionario.id})}">
- 											<span class="glyphicon glyphicon-remove" th:attr="data-s=${funcionario.id}"></span>
+ 											<span class="glyphicon glyphicon-remove" ></span>
  										</a>
  										<a class="btn btn-link btn-xs js-atualizar-status" th:if="${!funcionario.ativo}"
  											title="Ativar" rel="tooltip" data-placement="top"

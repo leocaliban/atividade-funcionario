@@ -16,12 +16,11 @@ jQuery(document).ready(function(){
 			var status = botao.data('status');
 			if(!status.localeCompare('Ativo')){
 				$('[data-role='+id+']').html('<span class="label label-danger">'+e+'</span>');
-				$('[data-s='+id+']').html('<span class="glyphicon glyphicon-ok">'+e+'</span>');
-
+				botao.hide();
 			}
 			else if(status.localeCompare('Ativo')){
 			$('[data-role='+id+']').html('<span class="label label-success">'+e+'</span>');
-
+				botao.hide();
 			}
 		
 		});
